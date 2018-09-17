@@ -5,7 +5,7 @@ Inspired by ([TAD_PHP] - https://github.com/cobisja/tad-php)
 
 ##About
 
-Mugen: A class that implements an interface to interacts with ZK Time & Attendance devices.
+Mugen: A class that implements an interface to interacts with Mugen Time & Attendance devices.
 
 
 ##Requirements
