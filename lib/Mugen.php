@@ -1,11 +1,11 @@
 <?php
 
-namespace pudinglabs\mugenreq;
+namespace mugenreq;
 
-use pudinglabs\mugenreq\MugenSoap;
-use pudinglabs\mugenreq\exceptions\ConnectionError;
-use pudinglabs\mugenreq\exceptions\UnrecognizedArgument;
-use pudinglabs\mugenreq\exceptions\UnrecognizedCommand;
+use mugenreq\MugenSoap;
+use mugenreq\exceptions\ConnectionError;
+use mugenreq\exceptions\UnrecognizedArgument;
+use mugenreq\exceptions\UnrecognizedCommand;
 
 class Mugen
 {

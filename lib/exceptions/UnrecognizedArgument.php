@@ -1,6 +1,6 @@
 <?php
 
-namespace pudinglabs\mugenreq\exceptions;
+namespace mugenreq\exceptions;
 
 class UnrecognizedArgument extends \Exception
 {

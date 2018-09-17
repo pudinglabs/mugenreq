@@ -1,8 +1,8 @@
 <?php
 
-namespace pudinglabs\mugenreq;
+namespace mugenreq;
 
-use pudinglabs\mugenreq\MugenResponse;
+use mugenreq\MugenResponse;
 
 
 class MugenSoap
