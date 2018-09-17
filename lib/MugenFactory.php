@@ -1,9 +1,9 @@
 <?php
 
-namespace mugenreq;
+namespace pudinglabs\mugenreq;
 
-use mugenreq\Mugen;
-use mugenreq\MugenSoap;
+use pudinglabs\mugenreq\Mugen;
+use pudinglabs\mugenreq\MugenSoap;
 
 
 class MugenFactory

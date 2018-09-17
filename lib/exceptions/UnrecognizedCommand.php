@@ -1,6 +1,6 @@
 <?php
 
-namespace mugenreq\exceptions;
+namespace pudinglabs\mugenreq\exceptions;
 
 class UnrecognizedCommand extends \Exception
 {

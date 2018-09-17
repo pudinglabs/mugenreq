@@ -1,8 +1,8 @@
 <?php
 
-namespace mugenreq;
+namespace pudinglabs\mugenreq;
 
-use mugenreq\exceptions\FilterArgumentError;
+use pudinglabs\mugenreq\exceptions\FilterArgumentError;
 
 
 class MugenResponse
