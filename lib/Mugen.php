@@ -13,8 +13,8 @@ class Mugen
         'com_key', 'pin', 'time', 'template',
         'name', 'password', 'group', 'privilege',
         'card', 'pin2', 'tz1', 'tz2', 'tz3',
-        'finger_id', 'option_name', 'date',
-        'size', 'valid', 'value'
+        'finger_id', 'option_name', 'option_value', 'date',
+        'size', 'valid', 'value', 'time'
     ];
 
     private $ip;

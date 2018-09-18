@@ -13,7 +13,24 @@ class MugenSoap
     private $soap_options;
 
     static private $commands_available = [
-        'get_all_user_info'   => '<GetAllUserInfo><ArgComKey xsi:type="xsd:integer">%com_key%</ArgComKey></GetAllUserInfo>',
+        'get_date_machine'    => '<GetDate><ArgComKey>%com_key%</ArgComKey></GetDate>',
+        'get_att_log'         => '<GetAttLog><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN></Arg></GetAttLog>',
+        'get_user_info'       => '<GetUserInfo><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN></Arg></GetUserInfo>',
+        'get_all_user_info'   => '<GetAllUserInfo><ArgComKey>%com_key%</ArgComKey></GetAllUserInfo>',
+        'get_user_template'   => '<GetUserTemplate><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN><FingerID>%finger_id%</FingerID></Arg></GetUserTemplate>',
+        'get_option_machine'  => '<GetOption><ArgComKey>%com_key%</ArgComKey><Arg><Name>%option_name%</Name></Arg></GetOption>',
+        'set_user_info'       => '<SetUserInfo><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN><Name>%name%</Name><Password>%password%</Password><Group>%group%</Group><Privilege>%privilege%</Privilege><Card>%card%</Card><PIN2>%pin%</PIN2><TZ1>%tz1%</TZ1><TZ2>%tz2%</TZ2><TZ3>%tz3%</TZ3></Arg></SetUserInfo>',
+        'write_user_info'     => '<GetUserInfo><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN><Name>%name%</Name><Password>%password%</Password><Group>%group%</Group><Privilege>%privilege%</Privilege><Card>%card%</Card><PIN2>%pin2%</PIN2><TZ1>%tz1%</TZ1><TZ2>%tz2%</TZ2><TZ3>%tz3%</TZ3></Arg></GetUserInfo>',
+        'set_user_template'   => '<SetUserTemplate><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN><FingerID>%finger_id%</FingerID><Size>%size%</Size><Valid>%valid%</Valid><Template>%template%</Template></Arg></SetUserTemplate>',
+        'write_user_template'   => '<GetUserTemplate><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN><FingerID>%finger_id%</FingerID><Size>%size%</Size><Valid>%valid%</Valid><Template>%template%</Template></Arg></GetUserTemplate>',
+        'set_option_machine'  => '<SetOption><ArgComKey>%com_key%</ArgComKey><Arg><Name>%option_name%</Name><Value>%option_value%</Value></Arg></SetOption>',
+        'set_date_machine'    => '<SetDate><ArgComKey>%com_key%</ArgComKey><Arg><Date>%date%</Date><Time>%time%</Time></Arg></SetDate>',
+        'delete_user'         => '<DeleteUser><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN></Arg></DeleteUser>',
+        'delete_template'     => '<DeleteTemplate><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN></Arg></DeleteTemplate>',
+        'delete_user_password'=> '<ClearUserPassword><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN></Arg></ClearUserPassword>',
+        'delete_data'         => '<ClearData><ArgComKey>%com_key%</ArgComKey><Arg><Value>%value%</Value></Arg></ClearData>',
+        'refresh_db'          => '<RefreshDB><ArgComKey>%com_key%</ArgComKey></RefreshDB>',
+        'restart_machine'     => '<Restart><ArgComKey>%com_key%</ArgComKey></Restart>',
     ];
 
 
