@@ -28,7 +28,7 @@ class MugenResponse
         $this->set_response($response);
     }
 
-
+    
     public function get_response(array $options = [])
     {
         if (!isset($options['format'])) {

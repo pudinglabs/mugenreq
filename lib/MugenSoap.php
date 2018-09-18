@@ -31,7 +31,6 @@ class MugenSoap
         'restart_machine'     => '<Restart><ArgComKey>%com_key%</ArgComKey></Restart>',
     ];
 
-
     public function __construct(array $soap_options)
     {
         $this->soap_options = $soap_options;
@@ -49,12 +48,10 @@ class MugenSoap
         return new MugenResponse($response, $encoding);
     }
 
-
     public function get_soap_options()
     {
         return $this->soap_options;
     }
-
 
     public function build_request($command, array $args, $encoding)
     {
