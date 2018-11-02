@@ -19,7 +19,7 @@ class MugenSoap
         'get_all_user_info'   => '<GetAllUserInfo><ArgComKey>%com_key%</ArgComKey></GetAllUserInfo>',
         'get_user_template'   => '<GetUserTemplate><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN><FingerID>%finger_id%</FingerID></Arg></GetUserTemplate>',
         'get_option_machine'  => '<GetOption><ArgComKey>%com_key%</ArgComKey><Arg><Name>%option_name%</Name></Arg></GetOption>',
-        'set_user_info'       => '<SetUserInfo><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN><Name>%name%</Name><Password>%password%</Password><Group>%group%</Group><Privilege>%privilege%</Privilege><Card>%card%</Card><PIN2>%pin%</PIN2><TZ1>%tz1%</TZ1><TZ2>%tz2%</TZ2><TZ3>%tz3%</TZ3></Arg></SetUserInfo>',
+        'set_user_info'       => ['<DeleteUser><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN></Arg></DeleteUser>', '<SetUserInfo><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN><Name>%name%</Name><Password>%password%</Password><Group>%group%</Group><Privilege>%privilege%</Privilege><Card>%card%</Card><PIN2>%pin%</PIN2><TZ1>%tz1%</TZ1><TZ2>%tz2%</TZ2><TZ3>%tz3%</TZ3></Arg></SetUserInfo>'],
         'set_user_template'   => '<SetUserTemplate><ArgComKey>%com_key%</ArgComKey><Arg><PIN>%pin%</PIN><FingerID>%finger_id%</FingerID><Size>%size%</Size><Valid>%valid%</Valid><Template>%template%</Template></Arg></SetUserTemplate>',
         'set_option_machine'  => '<SetOption><ArgComKey>%com_key%</ArgComKey><Arg><Name>%option_name%</Name><Value>%option_value%</Value></Arg></SetOption>',
         'set_date_machine'    => '<SetDate><ArgComKey>%com_key%</ArgComKey><Arg><Date>%date%</Date><Time>%time%</Time></Arg></SetDate>',
@@ -44,7 +44,7 @@ class MugenSoap
     public function execute($command, array $args, $encoding)
     {
         $request = $this->build_request($command, $args, $encoding);
-        $response = $this->execute_request($request);
+        $response = !is_array($request) ? $this->execute_request($request) : $this->execute_multiple_requests($request);
         return new MugenResponse($response, $encoding);
     }
 
@@ -57,7 +57,18 @@ class MugenSoap
     {
         $command_string = $this->get_command_string($command);
         $request = $this->parse_command_string($command_string, $args);
-        $request = $this->normalize_xml_string($request, $encoding);
+
+        if (!is_array($request)) {
+            $request = $this->normalize_xml_string($request, $encoding);
+        } else {
+            $request = array_map(
+                function ($request) use ($encoding) {
+                    return $this->normalize_xml_string($request, $encoding);
+                },
+                $request
+            );
+        }
+
         return $request;
     }
 
@@ -75,6 +86,15 @@ class MugenSoap
         $output = curl_exec($ch);
         curl_close($ch);
         return $output;
+    }
+
+    private function execute_multiple_requests(array $requests)
+    {
+        foreach ($requests as $request) {
+            $result = $this->execute_request($request);
+        }
+
+        return $result;
     }
 
     private function get_command_string($command)
