@@ -37,8 +37,8 @@ class MugenFactory
 
     private function get_default_options()
     {
-        $default_options['ip'] = '10.50.2.10';
-        $default_options['com_key'] = 111111;
+        $default_options['ip'] = '127.0.0.1';
+        $default_options['com_key'] = 123456;
         $default_options['encoding'] = 'iso8859-1';
         $default_options['connection_timeout'] = 5;
         return $default_options;
