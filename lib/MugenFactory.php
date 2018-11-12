@@ -4,7 +4,6 @@ namespace mugenreq;
 
 use mugenreq\Mugen;
 use mugenreq\MugenSoap;
-use mugenreq\TADZKLib;
 
 
 class MugenFactory
@@ -25,13 +24,12 @@ class MugenFactory
         
         $soap_options = [
             'location' => "http://{$options['ip']}/iWsService",
-            'connection_timeout' => $options['connection_timeout'],
-            'soap_port' => $options['soap_port']
+            'port' => 80,
+            'connection_timeout' => $options['connection_timeout']
         ];
 
         return new Mugen(
             new MugenSoap($soap_options),
-            new TADZKLib($options),
             $options
         );
     }
@@ -40,13 +38,9 @@ class MugenFactory
     private function get_default_options()
     {
         $default_options['ip'] = '127.0.0.1';
-        $default_options['internal_id'] = 1;
         $default_options['com_key'] = 123456;
         $default_options['encoding'] = 'iso8859-1';
         $default_options['connection_timeout'] = 5;
-        $default_options['soap_port'] = 80;
-        $default_options['udp_port'] = 4370;
-
         return $default_options;
     }
 

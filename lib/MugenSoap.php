@@ -76,7 +76,7 @@ class MugenSoap
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->get_soap_options()['location']);
-        curl_setopt($ch, CURLOPT_PORT, $this->get_soap_options()['soap_port']);
+        curl_setopt($ch, CURLOPT_PORT, $this->get_soap_options()['port']);
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->get_soap_options()['connection_timeout']);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml', 'Content-Length: '.strlen($request)));
         curl_setopt($ch, CURLOPT_POST, 1);
