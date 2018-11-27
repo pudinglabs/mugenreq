@@ -1,5 +1,5 @@
 {
-    "name": "mugenreq",
+    "name": "pudinglabs/mugenreq",
     "type": "library",
     "description": "A simple PHP class to interacts with Mugen Time & Attendance Devices",
     "license": "MIT",
